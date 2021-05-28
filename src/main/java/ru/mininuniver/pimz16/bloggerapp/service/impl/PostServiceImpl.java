@@ -41,7 +41,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostDto> findByContent(String query) {
         return mockData.entrySet().stream()
-                .filter( e -> e.getValue().getContent().contains(query))
+                .filter(
+                        e -> e.getValue().getContent().toUpperCase().contains(query.toUpperCase())
+                        || e.getValue().getTitle().toUpperCase().contains(query.toUpperCase())
+                )
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
     }
@@ -74,7 +77,8 @@ public class PostServiceImpl implements PostService {
             throw new RuntimeException("Post not found");
         }
 
-        return mockData.put(post.getId(), post);
+        mockData.put(post.getId(), post);
+        return mockData.get(post.getId());
     }
 
     @Override

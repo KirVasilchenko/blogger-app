@@ -1,7 +1,9 @@
 package ru.mininuniver.pimz16.bloggerapp.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
@@ -26,7 +28,7 @@ public class PostController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Поиск публикации по идентификатору", response = ResponseEntity.class)
-    public ResponseEntity<PostDto> getById(@PathVariable String id) {
+    public ResponseEntity<PostDto> getById(@PathVariable @ApiParam("Идентификатор") String id) {
         return ResponseEntity.ok()
                 .body(postService.getById(id));
     }
@@ -40,7 +42,7 @@ public class PostController {
 
     @GetMapping("/search")
     @ApiOperation(value = "Возвращает список публикаций, содержащих запрос", response = ResponseEntity.class)
-    public ResponseEntity<List<PostDto>> findByContent(@RequestParam String query) {
+    public ResponseEntity<List<PostDto>> findByContent(@RequestParam @ApiParam("Запрос") String query) {
         return ResponseEntity.ok()
                 .body(postService.findByContent(query));
     }
@@ -61,7 +63,7 @@ public class PostController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Удаляет пост", response = ResponseEntity.class)
-    public ResponseEntity<Boolean> delete(@PathVariable String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") String id) {
         return ResponseEntity.ok()
                 .body(postService.deleteById(id));
     }
