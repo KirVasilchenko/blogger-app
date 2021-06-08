@@ -2,7 +2,7 @@ package ru.mininuniver.pimz16.bloggerapp.service.impl;
 
 import org.springframework.stereotype.Service;
 import ru.mininuniver.pimz16.bloggerapp.dto.PostDto;
-import ru.mininuniver.pimz16.bloggerapp.dto.PostStatus;
+import ru.mininuniver.pimz16.bloggerapp.dto.PostStatusDto;
 import ru.mininuniver.pimz16.bloggerapp.service.PostService;
 
 import java.util.ArrayList;
@@ -21,12 +21,12 @@ public class PostServiceImpl implements PostService {
     public PostServiceImpl() {
         this.mockData = new HashMap<>();
 
-        addMockPost("Приветствие", PostStatus.PUBLISHED, "Текст приветствия");
-        addMockPost("Знакомство", PostStatus.SCHEDULED, "Текст поста-знакомства");
+        addMockPost("Приветствие", PostStatusDto.PUBLISHED, "Текст приветствия");
+        addMockPost("Знакомство", PostStatusDto.SCHEDULED, "Текст поста-знакомства");
 
     }
 
-    private PostDto addMockPost(String title, PostStatus status, String content) {
+    private PostDto addMockPost(String title, PostStatusDto status, String content) {
         var post = PostDto.builder().id(String.valueOf(++mockIndex)).title(title).status(status).content(content).build();
         mockData.put(post.getId(), post);
         return post;
