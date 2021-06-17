@@ -10,12 +10,12 @@ public interface TargetAudienceService {
 
     List<TargetAudience> findByQuery(String query);
 
-    TargetAudience getById(String id);
+    TargetAudience getById(Integer id);
 
-    String save(TargetAudience content);
+    Integer save(TargetAudience content);
 
     TargetAudience update(TargetAudience content);
 
-    boolean deleteById(String id);
+    boolean deleteById(Integer id);
 
 }

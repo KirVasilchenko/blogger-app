@@ -27,7 +27,7 @@ public class ContentPlanController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Поиск контент-плана по идентификатору", response = ResponseEntity.class)
-    public ResponseEntity<ContentPlan> getById(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<ContentPlan> getById(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(contentPlanService.getById(id));
     }
@@ -48,7 +48,7 @@ public class ContentPlanController {
 
     @PostMapping("/")
     @ApiOperation(value = "Сохраняет новый контент-план под новым идентификатором", response = ResponseEntity.class)
-    public ResponseEntity<String> save(ContentPlan post) {
+    public ResponseEntity<Integer> save(ContentPlan post) {
         return ResponseEntity.ok()
                 .body(contentPlanService.save(post));
     }
@@ -62,7 +62,7 @@ public class ContentPlanController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Удаляет контент-план", response = ResponseEntity.class)
-    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(contentPlanService.deleteById(id));
     }

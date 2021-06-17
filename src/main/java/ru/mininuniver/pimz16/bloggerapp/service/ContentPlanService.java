@@ -10,12 +10,12 @@ public interface ContentPlanService {
 
     List<ContentPlan> findByQuery(String query);
 
-    ContentPlan getById(String id);
+    ContentPlan getById(Integer id);
 
-    String save(ContentPlan content);
+    Integer save(ContentPlan content);
 
     ContentPlan update(ContentPlan content);
 
-    boolean deleteById(String id);
+    boolean deleteById(Integer id);
 
 }

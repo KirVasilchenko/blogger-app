@@ -27,7 +27,7 @@ public class MultimediaController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Поиск метаданных объекта мультимедиа по идентификатору", response = ResponseEntity.class)
-    public ResponseEntity<Multimedia> getById(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<Multimedia> getById(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(multimediaService.getById(id));
     }
@@ -48,7 +48,7 @@ public class MultimediaController {
 
     @PostMapping("/")
     @ApiOperation(value = "Сохраняет метаданные нового объекта мультимедиа под новым идентификатором", response = ResponseEntity.class)
-    public ResponseEntity<String> save(Multimedia post) {
+    public ResponseEntity<Integer> save(Multimedia post) {
         return ResponseEntity.ok()
                 .body(multimediaService.save(post));
     }
@@ -62,7 +62,7 @@ public class MultimediaController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Удаляет метаданные объекта мультимедиа", response = ResponseEntity.class)
-    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(multimediaService.deleteById(id));
     }

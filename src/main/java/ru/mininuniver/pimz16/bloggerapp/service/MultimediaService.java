@@ -10,12 +10,12 @@ public interface MultimediaService {
 
     List<Multimedia> findByQuery(String query);
 
-    Multimedia getById(String id);
+    Multimedia getById(Integer id);
 
-    String save(Multimedia content);
+    Integer save(Multimedia content);
 
     Multimedia update(Multimedia content);
 
-    boolean deleteById(String id);
+    boolean deleteById(Integer id);
 
 }

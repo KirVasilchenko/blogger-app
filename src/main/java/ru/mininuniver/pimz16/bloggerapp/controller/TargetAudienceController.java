@@ -27,13 +27,13 @@ public class TargetAudienceController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Поиск сегмента ЦА по идентификатору", response = ResponseEntity.class)
-    public ResponseEntity<TargetAudience> getById(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<TargetAudience> getById(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(targetAudienceService.getById(id));
     }
 
     @GetMapping("/")
-    @ApiOperation(value = "Возвращает список сегмнетов ЦА", response = ResponseEntity.class)
+    @ApiOperation(value = "Возвращает список сегментов ЦА", response = ResponseEntity.class)
     public ResponseEntity<List<TargetAudience>> getAll() {
         return ResponseEntity.ok()
                 .body(targetAudienceService.getAll());
@@ -48,7 +48,7 @@ public class TargetAudienceController {
 
     @PostMapping("/")
     @ApiOperation(value = "Сохраняет новый сегмент ЦА под новым идентификатором", response = ResponseEntity.class)
-    public ResponseEntity<String> save(TargetAudience post) {
+    public ResponseEntity<Integer> save(TargetAudience post) {
         return ResponseEntity.ok()
                 .body(targetAudienceService.save(post));
     }
@@ -62,7 +62,7 @@ public class TargetAudienceController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Удаляет сегмент ЦА", response = ResponseEntity.class)
-    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(targetAudienceService.deleteById(id));
     }

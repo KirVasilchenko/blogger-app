@@ -11,12 +11,12 @@ public interface PlatformService {
 
     List<Platform> findByQuery(String query);
 
-    Platform getById(String id);
+    Platform getById(Integer id);
 
-    String save(Platform content);
+    Integer save(Platform content);
 
     Platform update(Platform content);
 
-    boolean deleteById(String id);
+    boolean deleteById(Integer id);
 
 }

@@ -21,12 +21,15 @@ public class PostServiceImpl implements PostService {
     public PostServiceImpl() {
         this.mockData = new HashMap<>();
 
-        addMockPost("Приветствие", PostStatusDto.PUBLISHED, "Текст приветствия");
-        addMockPost("Знакомство", PostStatusDto.SCHEDULED, "Текст поста-знакомства");
+        addMockEntry("Приветствие", PostStatusDto.PUBLISHED, "Текст приветствия");
+        addMockEntry("Знакомство", PostStatusDto.SCHEDULED, "Текст поста-знакомства");
+        addMockEntry("Записки путешественника. Часть 1", PostStatusDto.PUBLISHED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales sagittis mollis. Curabitur eget sapien vitae quam tempus luctus at.");
+        addMockEntry("Записки путешественника. Часть 2", PostStatusDto.SCHEDULED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales sagittis mollis. Curabitur eget sapien vitae quam tempus luctus at.");
+        addMockEntry("Записки путешественника. Часть 3", PostStatusDto.DRAFT, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales sagittis mollis. Curabitur eget sapien vitae quam tempus luctus at.");
 
     }
 
-    private PostDto addMockPost(String title, PostStatusDto status, String content) {
+    private PostDto addMockEntry(String title, PostStatusDto status, String content) {
         var post = PostDto.builder().id(String.valueOf(++mockIndex)).title(title).status(status).content(content).build();
         mockData.put(post.getId(), post);
         return post;
@@ -64,7 +67,7 @@ public class PostServiceImpl implements PostService {
             throw new RuntimeException("ID must be null for new post");
         }
 
-        return addMockPost(post.getTitle(), post.getStatus(), post.getContent())
+        return addMockEntry(post.getTitle(), post.getStatus(), post.getContent())
                 .getId();
     }
 
@@ -83,21 +86,16 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public boolean deleteById(String id) {
-
         if (id == null) {
             throw new RuntimeException("ID must not be null for deleting post");
         }
         if (!mockData.containsKey(id)) {
             throw new RuntimeException("Post not found");
         }
-
         PostDto remove = mockData.remove(id);
-
         if (remove != null) {
             return true;
         }
-
         return false;
-
     }
 }

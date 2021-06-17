@@ -29,7 +29,7 @@ public class PlatformController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Поиск платформы по идентификатору", response = ResponseEntity.class)
-    public ResponseEntity<Platform> getById(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<Platform> getById(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(platformService.getById(id));
     }
@@ -50,7 +50,7 @@ public class PlatformController {
 
     @PostMapping("/")
     @ApiOperation(value = "Сохраняет новую платформу под новым идентификатором", response = ResponseEntity.class)
-    public ResponseEntity<String> save(Platform post) {
+    public ResponseEntity<Integer> save(Platform post) {
         return ResponseEntity.ok()
                 .body(platformService.save(post));
     }
@@ -64,7 +64,7 @@ public class PlatformController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Удаляет платформу", response = ResponseEntity.class)
-    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(platformService.deleteById(id));
     }

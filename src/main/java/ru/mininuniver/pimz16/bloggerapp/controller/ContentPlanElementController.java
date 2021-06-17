@@ -27,7 +27,7 @@ public class ContentPlanElementController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Поиск пункта контент-плана по идентификатору", response = ResponseEntity.class)
-    public ResponseEntity<ContentPlanElement> getById(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<ContentPlanElement> getById(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(contentPlanElementService.getById(id));
     }
@@ -40,7 +40,7 @@ public class ContentPlanElementController {
     }
 
     @GetMapping("/search")
-    @ApiOperation(value = "Возвращает список пунктов контент-плана по фильтру названия", response = ResponseEntity.class)
+    @ApiOperation(value = "(DEPRECATED) Возвращает список пунктов контент-плана по фильтру названия", response = ResponseEntity.class)
     public ResponseEntity<List<ContentPlanElement>> findByQuery(@RequestParam @ApiParam("Запрос") String query) {
         return ResponseEntity.ok()
                 .body(contentPlanElementService.findByQuery(query));
@@ -48,7 +48,7 @@ public class ContentPlanElementController {
 
     @PostMapping("/")
     @ApiOperation(value = "Сохраняет новый пункт контент-плана под новым идентификатором", response = ResponseEntity.class)
-    public ResponseEntity<String> save(ContentPlanElement post) {
+    public ResponseEntity<Integer> save(ContentPlanElement post) {
         return ResponseEntity.ok()
                 .body(contentPlanElementService.save(post));
     }
@@ -62,7 +62,7 @@ public class ContentPlanElementController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Удаляет пункт контент-плана", response = ResponseEntity.class)
-    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable @ApiParam("Идентификатор") Integer id) {
         return ResponseEntity.ok()
                 .body(contentPlanElementService.deleteById(id));
     }
